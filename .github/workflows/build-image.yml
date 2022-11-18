@@ -1,0 +1,32 @@
+on:
+  workflow_call:
+    inputs:
+      PROJECT:
+        required: true
+        type: string
+      SCOPE:
+        required: true
+        type: string
+      BUILD_VERSION:
+        required: true
+        type: string
+      BUILD_BRANCH:
+        required: true
+        type: string
+
+jobs:
+  build-image:
+    name: Build Docker Image
+    continue-on-error: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Build repository
+        uses: actions/checkout@v3
+        with:
+          repository: Pinoga/tradingbuild
+          ref: ${{ inputs.BUILD_BRANCH }}
+          path: deploy
+      - name: Build Docker Image
+        run: |
+          chmod +x deploy/build-image.sh
+          ./deploy/build-image.sh us-east-1 $ACCOUNT $SCOPE $PROJECT $GITHUB_SHA $BUILD_VERSION
