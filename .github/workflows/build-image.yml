@@ -33,6 +33,11 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::273019133067:role/github-oidc-role
           aws-region: us-east-1
+      - name: Debug
+        run: |
+          cd $GITHUB_WORKSPACE && ls -las
+          cd deploy && ls -las
+          cd - && cd .. && ls -las
       - name: Build Docker Image
         run: |
           chmod +x deploy/build-image.sh
