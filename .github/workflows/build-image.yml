@@ -22,6 +22,11 @@ jobs:
     env:
       ACCOUNT: 273019133067
     steps:
+      - name: Debug
+        run: |
+          cd $GITHUB_WORKSPACE && ls -las
+          cd $GITHUB_WORKSPACE/deploy && ls -las
+          cd $GITHUB_WORKSPACE/.. && ls -las
       - name: Checkout Build repository
         uses: actions/checkout@v3
         with:
@@ -36,8 +41,8 @@ jobs:
       - name: Debug
         run: |
           cd $GITHUB_WORKSPACE && ls -las
-          cd deploy && ls -las
-          cd - && cd .. && ls -las
+          cd $GITHUB_WORKSPACE/deploy && ls -las
+          cd $GITHUB_WORKSPACE/.. && ls -las
       - name: Build Docker Image
         run: |
           chmod +x deploy/build-image.sh
