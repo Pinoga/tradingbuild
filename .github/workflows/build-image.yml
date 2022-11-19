@@ -28,6 +28,11 @@ jobs:
           repository: Pinoga/tradingbuild
           ref: ${{ inputs.BUILD_BRANCH }}
           path: deploy
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: arn:aws:iam::273019133067:role/github-oidc-role
+          aws-region: us-east-1
       - name: Build Docker Image
         run: |
           chmod +x deploy/build-image.sh
