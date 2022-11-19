@@ -24,9 +24,9 @@ jobs:
     steps:
       - name: Debug
         run: |
-          cd $GITHUB_WORKSPACE && ls -las
-          cd $GITHUB_WORKSPACE/deploy && ls -las
-          cd $GITHUB_WORKSPACE/.. && ls -las
+          cd $GITHUB_WORKSPACE && pwd && ls -las
+          cd $GITHUB_WORKSPACE/deploy && pwd && ls -las
+          cd $GITHUB_WORKSPACE/.. && pwd && ls -las
       - name: Checkout Build repository
         uses: actions/checkout@v3
         with:
@@ -40,9 +40,9 @@ jobs:
           aws-region: us-east-1
       - name: Debug
         run: |
-          cd $GITHUB_WORKSPACE && ls -las
-          cd $GITHUB_WORKSPACE/deploy && ls -las
-          cd $GITHUB_WORKSPACE/.. && ls -las
+          cd $GITHUB_WORKSPACE && pwd && ls -las
+          cd $GITHUB_WORKSPACE/deploy && pwd && ls -las
+          cd $GITHUB_WORKSPACE/.. && pwd && ls -las
       - name: Build Docker Image
         run: |
           chmod +x deploy/build-image.sh
