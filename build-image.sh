@@ -21,7 +21,7 @@ TAG="$HASH"-"$BUILD"
 
 docker build -t "$REPOSITORY_URL":"$TAG" -f deploy/"$PROJECT"/Dockerfile .
 
-docker images
+docker image ls
 
 docker push "$REPOSITORY_URL":"$TAG"
 
