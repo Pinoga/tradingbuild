@@ -38,6 +38,10 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::273019133067:role/github-oidc-role
           aws-region: us-east-1
+      - uses: actions/cache@v3
+        with:
+          path: .
+          restore-keys: {{ $github.sha }}
       - name: Debug
         run: |
           cd $GITHUB_WORKSPACE && pwd && ls -las
