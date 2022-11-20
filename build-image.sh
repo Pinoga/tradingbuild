@@ -19,9 +19,9 @@ aws ecr get-login-password --region "$REGION" \
 
 TAG="$HASH"-"$BUILD"
 
-ls -las
-
 docker build -t "$REPOSITORY_URL":"$TAG" -f deploy/"$PROJECT"/Dockerfile .
+
+docker images
 
 docker push "$REPOSITORY_URL":"$TAG"
 
