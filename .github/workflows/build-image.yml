@@ -41,7 +41,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: .
-          restore-keys: {{ $github.sha }}
+          restore-keys: {{ github.sha }}
       - name: Debug
         run: |
           cd $GITHUB_WORKSPACE && pwd && ls -las
